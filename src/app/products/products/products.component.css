@@ -1,0 +1,58 @@
+/* Center the title */
+h1.text-center {
+    text-align: center;
+  }
+  
+  /* Add margin to the row containing the title and hr */
+  div.row:first-child {
+    margin-bottom: 30px;
+  }
+  
+  /* Style the table */
+  table.table {
+    font-size: 16px;
+    width: 100%;
+  }
+  
+  /* Style the table headers */
+  table.table th {
+    font-weight: bold;
+  }
+  
+  /* Style the table cells */
+  table.table td {
+    vertical-align: middle;
+  }
+  
+  /* Style the search input */
+  input.form-control {
+    width: 100%;
+  }
+  
+  /* Style the action buttons */
+  button.btn {
+    margin-right: 5px;
+  }
+  
+  /* Style the card */
+  .card {
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+    margin-bottom: 30px;
+  }
+  
+  /* Style the card header */
+  .card-header {
+    background-color: #f8f9fa;
+    border-bottom: 1px solid #dee2e6;
+  }
+  
+  /* Style the card body */
+  .card-body {
+    padding: 0;
+  }
+  
+  /* Style the table responsiveness */
+  .table-responsive {
+    overflow-x: auto;
+  }
+  

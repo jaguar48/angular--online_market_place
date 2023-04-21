@@ -1,0 +1,53 @@
+<div class="container">
+    <div class="row">
+      <div class="col-md-12">
+        <h1 class="text-center">Welcome to our Online Store</h1>
+        <hr>
+      </div>
+    </div>
+    <div class="row mt-3">
+      <div class="col-md-12">
+        <div class="card">
+          <div class="card-header">
+            <h2 class="text-center">Products</h2>
+          </div>
+          <div class="col-md-6">
+            <input type="text" class="form-control" placeholder="Search Products..." (keyup)="filterProducts($event.target.value)">
+          </div>
+          <div class="card-body">
+            <div class="table-responsive">
+              <table class="table table-striped">
+                <thead>
+                  <tr>
+                    <th>Product Name</th>
+                    <th>Description</th>
+                    <th>Price</th>
+                    <th>Quantity</th>
+                    <th>Brand</th>
+                    
+                    <th>Action</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr *ngFor="let product of filteredProducts">
+                    <td>{{ product.name }}</td>
+                    <td>{{ product.description }}</td>
+                    <td>{{ product.price }}</td>
+                    <td>{{ product.stockQuantity }}</td>
+                    <td>{{ product.brand }}</td>
+                    
+                    <td>
+                      <button type="button" id="details" class="btn btn-primary"  (click)="getProductDetails(product.id)">Details</button>
+                      <button type="button" id="edit" class="btn btn-warning" (click)="editProduct(product.id)">Edit</button>
+                      <button type="button" class="btn btn-success mr-3" (click)="addTCart(product.id)">Add to Cart</button>
+                      <button type="button" id="delete" class="btn btn-danger" (click)="deleteProduct(product.id)">Delete</button>
+                    </td>                    
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>

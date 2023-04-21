@@ -1,0 +1,27 @@
+<div *ngIf="cartItems">
+  <table>
+    <thead>
+      <tr>
+        <th>Name</th>
+        <th>Quantity</th>
+        <th>Price</th>
+        <th>Subtotal</th>
+        
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let item of cartItems">
+        <td>{{ item.name }}</td>
+        <td><input type="number" [(ngModel)]="item.quantity" (blur)="onUpdateQuantity(item)" min="1"></td>
+        <td>{{ item.price }}</td>
+        <td>{{ item.price * item.quantity }}</td>
+        <td><button (click)="onRemoveFromCart(item.ProductId)">Remove</button></td>
+      </tr>
+    </tbody>
+  </table>
+  <div>
+    <p>Total Items: {{ cartItems.length }}</p>
+    <p>Total Price: {{ totalPriceAndQuantity.totalPrice | currency }}</p>
+    <p>Total Quantity: {{ totalPriceAndQuantity.totalQuantity }}</p>
+  </div>
+</div>

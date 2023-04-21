@@ -1,0 +1,41 @@
+<div class="row">
+  <div class="col">
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+      <div class="container-fluid">
+        <a class="navbar-brand" [routerLink]="['/home']" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">Home</a>
+        <button class="navbar-toggler" type="button" (click)="isCollapsed = !isCollapsed" [attr.aria-expanded]="!isCollapsed" aria-controls="collapseNav">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="collapseNav" [collapse]="!isCollapsed" [isAnimated]="true">
+          <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+            <li class="nav-item">
+              <a class="nav-link" [routerLink]="['/owner/products']" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">Products</a>
+            </li>
+            <li class="nav-item" *ngIf="!isLoggedIn">
+              <a class="nav-link" [routerLink]="['/owner/seller/register']" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">Register Seller</a>
+            </li>
+            <li class="nav-item" *ngIf="!isLoggedIn">
+              <a class="nav-link" [routerLink]="['/owner/buyer/register']" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">Register Buyer</a>
+            </li>
+            <li class="nav-item" *ngIf="!isLoggedIn">
+              <a class="nav-link" [routerLink]="['/owner/login']" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">Login</a>
+            </li>
+            <li class="nav-item" *ngIf="isLoggedIn">
+              <a class="nav-link" (click)="onLogout()">Logout</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" [routerLink]="['/owner/create']" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">Create Product</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" [routerLink]="['/owner/view/cart']" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">Cart</a>
+            </li>
+            <!-- <li class="nav-item">
+              <a routerLink="/cart" routerLinkActive="active" class="nav-link">Cart ({{cartCount()}})</a>
+            </li> -->
+          </ul>
+        </div>
+      </div>
+    </nav>
+  </div>
+</div>

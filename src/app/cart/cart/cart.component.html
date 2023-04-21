@@ -1,0 +1,33 @@
+<div class="product-details" *ngIf="product">
+    <h2>{{ product.name }}</h2>
+    <p>{{ product.description }}</p>
+    <p>Price: {{ product.price | currency }}</p>
+  
+    <form>
+      <div class="quantity">
+        <label for="quantity">Quantity:</label>
+        <button class="quantity-btn" (click)="decreaseQuantity()">-</button>
+        <input type="number" id="quantity" [(ngModel)]="quantity" (ngModelChange)="onQuantityChange()" name="quantity" min="1">
+        <button class="quantity-btn" (click)="increaseQuantity()">+</button>
+      </div>
+  
+      <div class="total">
+        <div class="total-price">Total Price: {{ totalPrice | currency }}</div>
+        <div class="total-quantity">Total Quantity: {{ totalQuantity }}</div>
+      </div>
+  
+      <button class="add-to-cart-btn" (click)="onAddToCart()">Add to Cart</button>
+  
+      <p class="error-message">{{ errorMessage }}</p>
+    </form>
+  
+    <div class="cart-summary">
+      <h3>Cart Summary</h3>
+      <p>Total Quantity: {{ totalPriceAndQuantity.totalQuantity }}</p>
+      <p>Total Price: {{ totalPriceAndQuantity.totalPrice | currency }}</p>
+    </div>
+  </div>
+  
+  <div class="loading" *ngIf="!product">
+    <p>Loading product details...</p>
+  </div>

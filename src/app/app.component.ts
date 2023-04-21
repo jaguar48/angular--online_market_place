@@ -6,5 +6,10 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  title = 'myangular';
+  title = 'Online MarketPlace';
+  isLoggedIn: boolean = false;
+
+  onLoggedIn(loggedIn: boolean) {
+    this.isLoggedIn = loggedIn;
+  }
 }
