@@ -14,7 +14,19 @@ import { InternalServerComponent } from './error-pages/internal-server/internal-
 import { CurrencyPipe, DatePipe } from '@angular/common';
 import { ReactiveFormsModule } from '@angular/forms';
 import { DeleteComponent } from './cart/delete/delete.component';
+import { FooterComponent } from './footer/footer.component';
 
+// import { JWT_OPTIONS, JwtModule, JwtModuleOptions } from '@auth0/angular-jwt';
+
+// const jwtOptions: JwtModuleOptions = {
+//   config: {
+//     tokenGetter: () => {
+//       return localStorage.getItem('token');
+//     },
+//     allowedDomains: ['example.com', 'localhost:3000', 'localhost:4200'],
+//     disallowedRoutes: ['example.com/api/auth/login'],
+//   },
+// };
 
 @NgModule({
   declarations: [
@@ -25,9 +37,7 @@ import { DeleteComponent } from './cart/delete/delete.component';
     AboutComponent,
     InternalServerComponent,
     DeleteComponent,
-   
-    
-    
+    FooterComponent
   ],
   imports: [
     BrowserModule,
@@ -36,10 +46,15 @@ import { DeleteComponent } from './cart/delete/delete.component';
     HttpClientModule,
     CollapseModule.forRoot(),
     OwnerModule,
-    ReactiveFormsModule
-
+    ReactiveFormsModule,
+    // JwtModule.forRoot({
+    //   jwtOptionsProvider: {
+    //     provide: JWT_OPTIONS,
+    //     useFactory: () => jwtOptions
+    //   }
+    // })
   ],
-  providers: [DatePipe,CurrencyPipe],
+  providers: [],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

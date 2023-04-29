@@ -1,58 +1,99 @@
-/* Center the title */
-h1.text-center {
-    text-align: center;
+.product-row {
+  animation: fadeIn 1s ease-in-out;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+.loading {
+  display: flex;
+  justify-content
+  : center;
+  align-items: center;
+  height: 300px;
+  font-size: 20px;
+  color: #777;
   }
   
-  /* Add margin to the row containing the title and hr */
-  div.row:first-child {
-    margin-bottom: 30px;
+  .table-responsive {
+  overflow-x: auto;
   }
   
-  /* Style the table */
-  table.table {
-    font-size: 16px;
-    width: 100%;
+  /* Add some animation to the buttons */
+  .btn {
+  transition: all 0.2s ease-in-out;
+  }
+  .btn:hover {
+  transform: scale(1.05);
   }
   
-  /* Style the table headers */
-  table.table th {
-    font-weight: bold;
+  /* Add some animation to the table rows */
+  .table tr {
+  transition: all 0.2s ease-in-out;
+  }
+  .table tr:hover {
+  background-color: #f5f5f5;
+  transform: scale(1.01);
   }
   
-  /* Style the table cells */
-  table.table td {
-    vertical-align: middle;
+  /* Add some animation to the pagination links */
+  .pagination .page-item {
+  transition: all 0.2s ease-in-out;
+  }
+  .pagination .page-item:hover {
+  cursor: pointer;
+  background-color: #f5f5f5;
+  transform: scale(1.05);
+  }
+  
+  /* Style the product details page */
+  .card-title {
+  font-size: 2rem;
+  font-weight: bold;
+  text-align: center;
+  margin-bottom: 1rem;
+  }
+  
+  hr {
+  border-top: 2px solid #ccc;
+  margin-bottom: 1rem;
+  }
+  
+  .font-weight-bold {
+  font-weight: bold;
+  }
+  
+  .card-text {
+  font-size: 1.2rem;
+  }
+  
+  .btn-back {
+  background-color: #f44336;
+  color: #fff;
+  border: none;
+  margin-top: 1rem;
+  transition: all 0.2s ease-in-out;
+  }
+  .btn-back:hover {
+  background-color: #d32f2f;
+  }
+  
+  /* Add some animation to the card */
+  .card {
+  transition: all 0.2s ease-in-out;
+  }
+  .card:hover {
+  cursor: pointer;
+  transform: scale(1.02);
   }
   
   /* Style the search input */
-  input.form-control {
-    width: 100%;
+  .form-control {
+  font-size: 1.2rem;
   }
-  
-  /* Style the action buttons */
-  button.btn {
-    margin-right: 5px;
-  }
-  
-  /* Style the card */
-  .card {
-    box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
-    margin-bottom: 30px;
-  }
-  
-  /* Style the card header */
-  .card-header {
-    background-color: #f8f9fa;
-    border-bottom: 1px solid #dee2e6;
-  }
-  
-  /* Style the card body */
-  .card-body {
-    padding: 0;
-  }
-  
-  /* Style the table responsiveness */
-  .table-responsive {
-    overflow-x: auto;
-  }
-  

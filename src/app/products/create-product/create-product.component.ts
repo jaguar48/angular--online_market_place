@@ -8,6 +8,7 @@ import { ErrorHandlerService } from './../../shared/services/error-handler.servi
 import { BsModalRef, BsModalService, ModalOptions } from 'ngx-bootstrap/modal';
 import { SuccessModalComponent } from './../../shared/modals/success-modal/success-modal.component';
 import { ProductCreate } from 'src/app/_interfaces/product-create.model';
+import { Category } from 'src/app/_interfaces/category.models';
 
 @Component({
   selector: 'app-create-product',
@@ -19,7 +20,8 @@ export class CreateProductComponent implements OnInit {
   errorMessage: string = '';
   productForm: FormGroup;
   bsModalRef?: BsModalRef;
-  
+  categories: Category[];
+  selectedFiles: File[] = [];
 
   constructor(
     private repository: OwnerRepositoryService,
@@ -31,6 +33,7 @@ export class CreateProductComponent implements OnInit {
 
   ngOnInit() {
     this.executeProductCreation();
+    this.getCategories();
   }
 
   executeProductCreation() {
@@ -39,12 +42,40 @@ export class CreateProductComponent implements OnInit {
       description: ['', [Validators.required, Validators.maxLength(1000)]],
       price: ['', [Validators.required, Validators.pattern(/^\d+(\.\d{1,2})?$/)]],
       stockQuantity: ['', Validators.required],
-      brand: ['', [Validators.required, Validators.maxLength(60)]]
+      brand: ['', [Validators.required, Validators.maxLength(60)]],
+      categoryId: ['', Validators.required],
+      images: [null] 
     });
   }
   
+  private getCategories = () => {
+    const categoryUrl = 'marketplace/products/categories';
+    this.repository.getCategories(categoryUrl).subscribe({
+      next: (categories) => {
+        this.categories = categories;
+      },
+      error: (err: HttpErrorResponse) => {
+        console.log(err);
+        this.errorHandler.handleError(err);
+        this.errorMessage = this.errorHandler.errorMessage;
+      }
+    });
+  }
+
   onSubmit() {
     const productToCreate: ProductCreate = this.productForm.value;
+    const images: string[] = [];
+
+    for (let i = 0; i < this.selectedFiles.length; i++) {
+      const reader = new FileReader();
+      reader.onload = (event: ProgressEvent<FileReader>) => {
+        images.push(event.target.result as string);
+      };
+      reader.readAsDataURL(this.selectedFiles[i]);
+    }
+  
+    productToCreate.images = images;
+  
     const productUrl = 'marketplace/products/create';
     const token = localStorage.getItem('token');
     const authToken = `Bearer ${token}`;
@@ -70,8 +101,32 @@ export class CreateProductComponent implements OnInit {
     });
   }
   
+  
+  onFileChange(event) {
+    const files = event.target.files;
+    this.selectedFiles = [];
+    
+    for (let i = 0; i < files.length; i++) {
+      this.selectedFiles.push(files[i]);
+    }
+    
+    const fileArray = [];
+    for (let i = 0; i < this.selectedFiles.length; i++) {
+      const reader = new FileReader();
+      reader.onload = (e: any) => {
+        fileArray.push(e.target.result);
+      };
+      reader.readAsDataURL(this.selectedFiles[i]);
+    }
+    
+    this.productForm.patchValue({
+      images: fileArray
+    });
+  }
+  
+  
+  
   redirectToProductList = () => {
     this.router.navigate(['/owner/products']);
   };
 }
-

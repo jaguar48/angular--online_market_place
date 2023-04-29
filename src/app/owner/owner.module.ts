@@ -14,6 +14,7 @@ import { EditProductComponent } from '../products/edit-product/edit-product.comp
 import { DeleteProductComponent } from '../products/delete-product/delete-product.component';
 import { CartComponent } from '../cart/cart/cart.component';
 import { ViewcartComponent } from '../cart/viewcart/viewcart.component';
+import { CheckoutComponent } from '../checkout/checkout/checkout.component';
 
 @NgModule({
   declarations: [
@@ -27,7 +28,7 @@ import { ViewcartComponent } from '../cart/viewcart/viewcart.component';
     DeleteProductComponent,
     CartComponent,
     ViewcartComponent,
-
+    CheckoutComponent,
   ],
   imports: [
     CommonModule,
@@ -37,6 +38,6 @@ import { ViewcartComponent } from '../cart/viewcart/viewcart.component';
     FormsModule,
     BsDatepickerModule.forRoot()
   ],
-  providers: [DatePipe,CurrencyPipe],
+  providers: [DatePipe, CurrencyPipe],
 })
 export class OwnerModule { }

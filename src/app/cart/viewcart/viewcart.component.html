@@ -12,16 +12,17 @@
     <tbody>
       <tr *ngFor="let item of cartItems">
         <td>{{ item.name }}</td>
-        <td><input type="number" [(ngModel)]="item.quantity" (blur)="onUpdateQuantity(item)" min="1"></td>
+        <td>{{item.quantity}}</td>
         <td>{{ item.price }}</td>
         <td>{{ item.price * item.quantity }}</td>
-        <td><button (click)="onRemoveFromCart(item.ProductId)">Remove</button></td>
+      
+      
       </tr>
     </tbody>
   </table>
   <div>
     <p>Total Items: {{ cartItems.length }}</p>
-    <p>Total Price: {{ totalPriceAndQuantity.totalPrice | currency }}</p>
-    <p>Total Quantity: {{ totalPriceAndQuantity.totalQuantity }}</p>
+   
+    <button type="button" class="btn btn-success mr-3" (click)="Oncheckout(cartId[0])">Checkout</button>
   </div>
 </div>

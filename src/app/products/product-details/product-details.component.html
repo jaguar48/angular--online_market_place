@@ -28,7 +28,17 @@
               <p class="card-text">{{ product?.brand }}</p>
             </div>
           </div>
+          <div class="row">
+            <div class="col-md-6">
+              <p class="font-weight-bold">Category:</p>
+              <p>
+                <a [routerLink]="['/category', product.categoryId]">{{ product.categoryName }}</a>
+              </p>
+            </div>
+          </div>
+          
         </div>
+        
       </div>
       <div class="row justify-content-center">
         <a routerLink="/owner/products" class="btn btn-secondary">Back to Products</a>

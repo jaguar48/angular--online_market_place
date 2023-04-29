@@ -14,6 +14,10 @@ export class ProductsComponent implements OnInit{
   products: Product [];
   errorMessage: string = '';
   filteredProducts: Product[];
+  currentPage: number = 1;
+totalPages: number;
+productsPerPage = 4;
+
 
   constructor(private repository: OwnerRepositoryService, private errorHandler: ErrorHandlerService,
     private router: Router) { }
@@ -29,15 +33,33 @@ export class ProductsComponent implements OnInit{
     .subscribe({
       next: (products: Product [] ) => {
         this.products = products;
+        
         this.filteredProducts = products;
-
+        this.totalPages = Math.ceil(products.length / this.productsPerPage);
+        this.setCurrentPage(1);
       },
       error: (err: HttpErrorResponse) => {
-          this.errorHandler.handleError(err);
-          this.errorMessage = this.errorHandler.errorMessage;
+        this.errorHandler.handleError(err);
+        this.errorMessage = this.errorHandler.errorMessage;
       }
     })
   }
+  
+  setCurrentPage(page: number) {
+    if (page < 1 || page > this.totalPages) {
+      return;
+    }
+  
+    this.currentPage = page;
+    const startIndex = (page - 1) * this.productsPerPage;
+    const endIndex = Math.min(startIndex + this.productsPerPage, this.products.length);
+    this.filteredProducts = this.products.slice(startIndex, endIndex);
+  }
+  
+  get totalPagesArray() {
+    return Array(this.totalPages).fill(0).map((x, i) => i + 1);
+  }
+  
   public getProductDetails = (id) => {
     const detailsUrl: string = `/owner/details/${id}`; 
     this.router.navigate([detailsUrl]); 

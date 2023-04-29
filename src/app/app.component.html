@@ -226,18 +226,10 @@
     transform: translateY(-0.25rem);
     box-shadow: 0px 3px 15px rgba(0, 0, 0, 0.2);
   }
+.container {
+  width: 100%;
+}
 
-  footer {
-    margin-top: 8px;
-    display: flex;
-    align-items: center;
-    line-height: 20px;
-  }
-
-  footer a {
-    display: flex;
-    align-items: center;
-  }
 
   .github-star-badge {
     color: #24292e;
@@ -308,13 +300,22 @@
     <div class="col">
       <app-menu [isLoggedIn]="isLoggedIn" (loggedIn)="isLoggedIn = $event"></app-menu>
     </div>
-  <div class="row">
+  </div> <!-- Close the first row div -->
 
+  <div class="row">
     <div class="col">
-      <router-outlet ></router-outlet>
+      <router-outlet></router-outlet>
     </div>
-  </div>
-</div>
+    
+  </div> <!-- Close the second row div -->
+</div> <!-- Close the container div -->
+
+
+<app-footer>
+  
+</app-footer>
+
+
 
 <!-- * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * -->
 <!-- * * * * * * * * * * * The content above * * * * * * * * * * * -->
@@ -323,5 +324,3 @@
 <!-- * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * -->
 <!-- * * * * * * * * * * End of Placeholder * * * * * * * * * * * -->
 <!-- * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * -->
-
-<router-outlet></router-outlet>

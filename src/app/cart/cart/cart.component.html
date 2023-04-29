@@ -2,7 +2,7 @@
     <h2>{{ product.name }}</h2>
     <p>{{ product.description }}</p>
     <p>Price: {{ product.price | currency }}</p>
-  
+    <p>Available in stock: {{ product.stockQuantity}}</p>
     <form>
       <div class="quantity">
         <label for="quantity">Quantity:</label>
@@ -19,6 +19,7 @@
       <button class="add-to-cart-btn" (click)="onAddToCart()">Add to Cart</button>
   
       <p class="error-message">{{ errorMessage }}</p>
+      <p class="success-message">{{  successMessage }}</p>
     </form>
   
     <div class="cart-summary">

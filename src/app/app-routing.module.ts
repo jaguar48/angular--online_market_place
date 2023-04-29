@@ -9,9 +9,9 @@ const routes: Routes = [
   { path: '404', component: NotFoundComponent },
   { path: 'owner', loadChildren: () => import('./owner/owner.module').then(m => m.OwnerModule) }, 
   { path: 'home', component: HomeComponent }, 
-  { path: '', redirectTo: '/home', pathMatch: 'full' },
+  { path: '', redirectTo: 'home', pathMatch: 'full' },
   { path: '500', component: InternalServerComponent }, 
-  { path: '**', redirectTo: '/404', pathMatch: 'full' }
+  { path: '**', redirectTo: '404', pathMatch: 'full' }
 ];
 
 @NgModule({

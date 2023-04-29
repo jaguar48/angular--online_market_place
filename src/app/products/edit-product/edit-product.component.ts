@@ -12,7 +12,7 @@ import { Product } from 'src/app/_interfaces/product.model';
 export class EditProductComponent implements OnInit {
   productForm: FormGroup;
   productId: number;
-  loginMessage: string = '';
+  errorMessage: string = '';
 
   constructor(
     private fb: FormBuilder,
@@ -65,14 +65,14 @@ export class EditProductComponent implements OnInit {
         console.log('Edit Product Response: ', response);
         if (response.success) {
           this.router.navigateByUrl('/owner/products');
-          this.loginMessage = response.message;
+          this.errorMessage = response.message;
         } else {
-          this.loginMessage = 'registration failed';
+          this.errorMessage = 'edit failed';
         }
       },
       error: (error: any) => {
         console.error(error);
-        this.loginMessage = 'registration failed';
+        this.errorMessage = 'edit failed';
       }
     });
   }

@@ -1,4 +1,4 @@
-<div class="container">
+<!-- <div class="container">
     <div class="row">
       <div class="col-md-12">
         <h2>Create Product</h2>
@@ -49,4 +49,79 @@
       </div>
      
     </div>
-  </div>
+  </div> -->
+
+
+
+  <div class="container mt-4">
+    <div class="row">
+      <div class="col-md-8 offset-md-2">
+        <h1>Create Product</h1>
+        <form [formGroup]="productForm" (ngSubmit)="onSubmit()" novalidate enctype="multipart/form-data">
+          <div class="form-group">
+            <label for="name">Name:</label>
+            <input type="text" class="form-control" formControlName="name" id="name" required>
+            <div *ngIf="productForm.get('name').invalid && productForm.get('name').touched" class="alert alert-danger mt-2">
+              <div *ngIf="productForm.get('name').errors.required">Name is required</div>
+              <div *ngIf="productForm.get('name').errors.maxlength">Name should be at most 60 characters long</div>
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="description">Description:</label>
+            <textarea class="form-control" formControlName="description" id="description" required></textarea>
+            <div *ngIf="productForm.get('description').invalid && productForm.get('description').touched" class="alert alert-danger mt-2">
+              <div *ngIf="productForm.get('description').errors.required">Description is required</div>
+              <div *ngIf="productForm.get('description').errors.maxlength">Description should be at most 1000 characters long</div>
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="price">Price:</label>
+            <div class="input-group">
+              <div class="input-group-prepend">
+                <span class="input-group-text">$</span>
+              </div>
+              <input type="number" class="form-control" formControlName="price" id="price" required>
+            </div>
+            <div *ngIf="productForm.get('price').invalid && productForm.get('price').touched" class="alert alert-danger mt-2">
+              <div *ngIf="productForm.get('price').errors.required">Price is required</div>
+              <div *ngIf="productForm.get('price').errors.pattern">Price should be a valid decimal with at most 2 decimal places</div>
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="stockQuantity">Stock Quantity:</label>
+            <input type="number" class="form-control" formControlName="stockQuantity" id="stockQuantity" required>
+            <div *ngIf="productForm.get('stockQuantity').invalid && productForm.get('stockQuantity').touched" class="alert alert-danger mt-2">
+              <div *ngIf="productForm.get('stockQuantity').errors.required">Stock Quantity is required</div>
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="brand">Brand:</label>
+            <input type="text" class="form-control" formControlName="brand" id="brand" required>
+            <div *ngIf="productForm.get('brand').invalid && productForm.get('brand').touched" class="alert alert-danger mt-2">
+              <div *ngIf="productForm.get('brand').errors.required">Brand is required</div>
+              <div *ngIf="productForm.get('brand').errors.maxlength">Brand should be at most 60 characters long</div>
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="categoryId">Category:</label>
+            <select class="form-control" formControlName="categoryId" id="categoryId" required>
+              <option [ngValue]="null" disabled>Select a category</option>
+              <option *ngFor="let category of categories" [ngValue]="category.id">{{category.name}}</option>
+            </select>
+            <div *ngIf="productForm.get('categoryId').invalid && productForm.get('categoryId').touched" class="alert alert-danger mt-2">
+              <div *ngIf="productForm.get('categoryId').errors.required">Category is required</div>
+            </div>
+          </div>
+      
+          
+          <div class="form-group">
+            <label for="image">Image:</label>
+            <input type="file" class="form-control-file" id="images" (change)="onFileChange($event.target.files)" multiple accept=".jpg,.png,.jpeg">
+          </div>          
+          
+
+      
+          <button type="submit" class="btn btn-primary" [disabled]="productForm.invalid">Create Product</button>
+        </form>
+      </div>                
+  
