@@ -32,7 +32,16 @@
             <div class="col-md-6">
               <p class="font-weight-bold">Category:</p>
               <p>
-                <a [routerLink]="['/category', product.categoryId]">{{ product.categoryName }}</a>
+               
+                <a [routerLink]="['/owner/category', product.categoryId]">{{ product.categoryName }}</a>
+              </p>
+            </div>
+          </div>
+           <div class="row">
+            <div class="col-md-6">
+              <p class="font-weight-bold">Vendor:</p>
+              <p>
+                <a href="">{{ product.businessName }}</a>
               </p>
             </div>
           </div>

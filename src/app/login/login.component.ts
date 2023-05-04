@@ -89,14 +89,12 @@
 
 
 
-import { Component, OnInit, Output, EventEmitter } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
-import { OwnerRepositoryService } from '../shared/services/owner-repository.service';
+import { AuthService } from '../auth.service';
 import { User } from '../_interfaces/user.model';
-// import { JwtHelperService } from '@auth0/angular-jwt';
-import { HttpErrorResponse } from '@angular/common/http';
-import { ErrorHandler } from '@angular/core';
+
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
@@ -104,15 +102,12 @@ import { ErrorHandler } from '@angular/core';
 })
 export class LoginComponent implements OnInit {
   loginForm: FormGroup;
-  loggedIn: EventEmitter<boolean> = new EventEmitter<boolean>();
   loginMessage: string = '';
 
   constructor(
     private fb: FormBuilder,
-    private ownerRepository: OwnerRepositoryService,
-    private router: Router,
-    // private jwtHelper: JwtHelperService,
-    private errorHandler: ErrorHandler
+    private authService: AuthService,
+    private router: Router
   ) {}
 
   ngOnInit() {
@@ -120,26 +115,18 @@ export class LoginComponent implements OnInit {
       username: ['', Validators.required],
       password: ['', Validators.required]
     });
-    // const token = localStorage.getItem('token');
-    // if (token && this.jwtHelper.isTokenExpired(token)) {
-    //   localStorage.removeItem('token');
-    //   this.router.navigateByUrl('/owner/login')
-    // }
   }
 
   onSubmit() {
     const user: User = this.loginForm.value;
-    const loginAddress = 'marketplace/authentication/login';
-    this.ownerRepository.login(loginAddress, user).subscribe({
-      next: (response: { token: string }) => {
-        localStorage.setItem('token', response.token);
+    this.authService.login( user).subscribe({
+      next: () => {
         this.loginMessage = 'Login successful'; 
-        this.loggedIn.emit(true);
         this.router.navigateByUrl('/owner/products').then(() => {
           window.location.reload();
         });
       },
-      error: (err: HttpErrorResponse) => {
+      error: (err) => {
         console.log('Error while checking out: ', err);
         
         if (err.status === 0) {
@@ -150,7 +137,7 @@ export class LoginComponent implements OnInit {
           this.loginMessage = 'Invalid request. Please try again with valid inputs.';
         } else if (err.status === 401) {
           console.log('Unauthorized Error');
-          this.loginMessage = 'You are not authorized to perform this action. Please login and try again.';
+          this.loginMessage = 'Incorrect username or password. Please try again.';
         } else if (err.status === 403) {
           console.log('Forbidden Error');
           this.loginMessage = 'Access to the requested resource is forbidden. Please contact the administrator.';
@@ -161,19 +148,11 @@ export class LoginComponent implements OnInit {
           console.log('Unknown Error');
           this.loginMessage = 'An unknown error occurred. Please try again later.';
         }
-        
-        this.errorHandler.handleError(err);
       }
     });
   }
-  
- 
-  onLogout() {
-    localStorage.removeItem('token');
-    this.router.navigateByUrl('/owner/login');
-    this.loggedIn.emit(false);
-  }
 }
+
 
 
 

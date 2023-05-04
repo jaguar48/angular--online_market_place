@@ -1,0 +1,13 @@
+<div class="category-details">
+    <h1>{{ categoryWithProducts?.name }}</h1>
+  
+    <div *ngIf="categoryWithProducts?.products" class="product-list">
+      <div *ngFor="let product of categoryWithProducts.products" class="product-item">
+        <a routerLink="/owner/details/{{product.id}}"><h3>{{ product?.name }}</h3></a>
+        <p>{{ product.description }}</p>
+      </div>
+    </div>
+  
+    <p *ngIf="!categoryWithProducts" class="loading-message">Loading...</p>
+    <p *ngIf="errorMessage" class="error-message">{{ errorMessage }}</p>
+  </div>

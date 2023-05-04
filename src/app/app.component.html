@@ -295,26 +295,24 @@
 </style>
 
 <!-- Toolbar -->
-<div class="container">
-  <div class="row">
+
+ 
+
+<app-menu></app-menu> 
+  <!-- <div class="row">
     <div class="col">
-      <app-menu [isLoggedIn]="isLoggedIn" (loggedIn)="isLoggedIn = $event"></app-menu>
+      <app-nav [isLoggedIn]="isLoggedIn" (loggedIn)="isLoggedIn = $event"></app-nav>
     </div>
-  </div> <!-- Close the first row div -->
+  </div> -->
 
   <div class="row">
     <div class="col">
       <router-outlet></router-outlet>
+      <router-outlet ></router-outlet>
     </div>
-    
-  </div> <!-- Close the second row div -->
-</div> <!-- Close the container div -->
+  </div>
 
-
-<app-footer>
-  
-</app-footer>
-
+<app-footer></app-footer> 
 
 
 <!-- * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * -->

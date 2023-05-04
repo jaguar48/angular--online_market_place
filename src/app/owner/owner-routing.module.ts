@@ -11,6 +11,8 @@ import { DeleteProductComponent } from '../products/delete-product/delete-produc
 import { CartComponent } from '../cart/cart/cart.component';
 import { ViewcartComponent } from '../cart/viewcart/viewcart.component';
 import { CheckoutComponent } from '../checkout/checkout/checkout.component';
+import { ProductCategoryComponent } from '../products/product-category/product-category.component';
+import { CategorydetailsComponent } from '../products/categorydetails/categorydetails.component';
 // import { CheckoutComponent } from '../checkout/checkout/checkout.component';
 
 const routes: Routes = [
@@ -26,6 +28,8 @@ const routes: Routes = [
   { path: 'view/cart', component: ViewcartComponent },
   { path: 'deletecart', component: ViewcartComponent },
   { path: 'checkout/:cartId', component: CheckoutComponent },
+  { path: 'category', component: ProductCategoryComponent  },
+  { path: 'category/:id', component: CategorydetailsComponent  },
 ];
 
 @NgModule({

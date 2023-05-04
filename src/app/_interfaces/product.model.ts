@@ -7,5 +7,5 @@ export interface Product {
   brand: string;
   categoryName:string;
  categoryId :number;
-
+ businessName: string;
 }

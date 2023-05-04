@@ -15,6 +15,15 @@ import { CurrencyPipe, DatePipe } from '@angular/common';
 import { ReactiveFormsModule } from '@angular/forms';
 import { DeleteComponent } from './cart/delete/delete.component';
 import { FooterComponent } from './footer/footer.component';
+import { NavComponent } from './nav/nav.component';
+import { LayoutModule } from '@angular/cdk/layout';
+import { MatToolbarModule } from '@angular/material/toolbar';
+import { MatButtonModule } from '@angular/material/button';
+import { MatSidenavModule } from '@angular/material/sidenav';
+import { MatIconModule } from '@angular/material/icon';
+import { MatListModule } from '@angular/material/list';
+import { SellerModule } from './seller/seller.module';
+import { CategorydetailsComponent } from './products/categorydetails/categorydetails.component';
 
 // import { JWT_OPTIONS, JwtModule, JwtModuleOptions } from '@auth0/angular-jwt';
 
@@ -37,7 +46,9 @@ import { FooterComponent } from './footer/footer.component';
     AboutComponent,
     InternalServerComponent,
     DeleteComponent,
-    FooterComponent
+    FooterComponent,
+    NavComponent,
+  
   ],
   imports: [
     BrowserModule,
@@ -46,7 +57,14 @@ import { FooterComponent } from './footer/footer.component';
     HttpClientModule,
     CollapseModule.forRoot(),
     OwnerModule,
+    SellerModule,
     ReactiveFormsModule,
+    LayoutModule,
+    MatToolbarModule,
+    MatButtonModule,
+    MatSidenavModule,
+    MatIconModule,
+    MatListModule,
     // JwtModule.forRoot({
     //   jwtOptionsProvider: {
     //     provide: JWT_OPTIONS,

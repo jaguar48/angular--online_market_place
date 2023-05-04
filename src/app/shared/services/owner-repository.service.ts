@@ -8,7 +8,7 @@ import { ProductCreate } from 'src/app/_interfaces/product-create.model';
 import { BuyerForRegistration } from 'src/app/_interfaces/registerbuyer.model';
 import { SellerForRegistration } from 'src/app/_interfaces/regsterseller.model';
 import { User } from 'src/app/_interfaces/user.model';
-import { Category } from 'src/app/_interfaces/category.models';
+import { Category, CategoryWithProducts } from 'src/app/_interfaces/category.models';
 @Injectable({
   providedIn: 'root'
 })
@@ -27,7 +27,10 @@ export class OwnerRepositoryService {
   public getProduct = (route: string) => {
     return this.http.get<Product>(this.createCompleteRoute(route, this.envUrl.urlAddress));
   }
-
+ 
+  public  getCategoryWithProducts = (route: string) => {
+    return this.http.get<CategoryWithProducts>(this.createCompleteRoute(route, this.envUrl.urlAddress));
+  }
 
   public login = (route: string, user: User) => {
     return this.http.post<any>(this.createCompleteRoute(route, this.envUrl.urlAddress), user, this.generateHeaders());

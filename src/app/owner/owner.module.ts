@@ -15,6 +15,8 @@ import { DeleteProductComponent } from '../products/delete-product/delete-produc
 import { CartComponent } from '../cart/cart/cart.component';
 import { ViewcartComponent } from '../cart/viewcart/viewcart.component';
 import { CheckoutComponent } from '../checkout/checkout/checkout.component';
+import { ProductCategoryComponent } from '../products/product-category/product-category.component';
+import { CategorydetailsComponent } from '../products/categorydetails/categorydetails.component';
 
 @NgModule({
   declarations: [
@@ -29,6 +31,8 @@ import { CheckoutComponent } from '../checkout/checkout/checkout.component';
     CartComponent,
     ViewcartComponent,
     CheckoutComponent,
+    ProductCategoryComponent,
+    CategorydetailsComponent,
   ],
   imports: [
     CommonModule,

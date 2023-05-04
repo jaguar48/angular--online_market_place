@@ -1,0 +1,21 @@
+<div class="container">
+    <div class="row">
+      <div class="col">
+        <h2>Product Categories</h2>
+        <hr>
+      </div>
+    </div>
+  
+    <div class="row">
+      <div class="col">
+        <div *ngIf="errorMessage" class="alert alert-danger">{{errorMessage}}</div>
+        <div class="list-group">
+         
+          <button *ngFor="let category of categories" type="button" class="list-group-item list-group-item-action" (click)="getCategoryDetails(category.id)">
+            {{category.name}}
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+  
