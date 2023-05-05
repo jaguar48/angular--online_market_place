@@ -15,6 +15,8 @@ import { ProductCategoryComponent } from '../products/product-category/product-c
 import { CategorydetailsComponent } from '../products/categorydetails/categorydetails.component';
 import { SellerComponent } from '../seller-dashboard/seller/seller.component';
 import { SellerOrderComponent } from '../orders/seller-order/seller-order.component';
+import { UpdateOrderComponent } from '../orders/update-order/update-order.component';
+import { BuyerOrderComponent } from '../orders/buyer-order/buyer-order.component';
 // import { CheckoutComponent } from '../checkout/checkout/checkout.component';
 
 const routes: Routes = [
@@ -33,6 +35,8 @@ const routes: Routes = [
   { path: 'category', component: ProductCategoryComponent  },
   { path: 'category/:id', component: CategorydetailsComponent},
   { path: 'seller/orders', component: SellerOrderComponent },
+  { path: 'update/status/:id', component: UpdateOrderComponent},
+  { path: 'buyer/orders', component: BuyerOrderComponent },
 ];
 
 @NgModule({

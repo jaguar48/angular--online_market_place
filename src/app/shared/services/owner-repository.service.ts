@@ -10,6 +10,7 @@ import { SellerForRegistration } from 'src/app/_interfaces/regsterseller.model';
 import { User } from 'src/app/_interfaces/user.model';
 import { Category, CategoryWithProducts } from 'src/app/_interfaces/category.models';
 import { Order } from 'src/app/_interfaces/order.model';
+import { updateorder } from 'src/app/_interfaces/update-order.models';
 @Injectable({
   providedIn: 'root'
 })
@@ -106,6 +107,16 @@ export class OwnerRepositoryService {
     };
     return this.http.get<Order>(this.createCompleteRoute(route, this.envUrl.urlAddress), httpOptions);
   };
+
+  public getBuyerOrder = (route: string, authToken: string) => {
+    const httpOptions = {
+      headers: new HttpHeaders({
+        'Content-Type': 'application/json',
+        Authorization: authToken,
+      }),
+    };
+    return this.http.get<Order>(this.createCompleteRoute(route, this.envUrl.urlAddress), httpOptions);
+  };
   
   public removeFromCart = (route: string,authToken: string ) => {
     const httpOptions = {
@@ -129,6 +140,17 @@ export class OwnerRepositoryService {
     return this.http.post<any>(this.createCompleteRoute(route, this.envUrl.urlAddress), cart, httpOptions);
   };
 
+  public updateOrderStatus = (route: string, order: updateorder , authToken: string ) => {
+    const httpOptions = {
+      headers: new HttpHeaders({
+        'Content-Type': 'application/json',
+        'Access-Control-Allow-Origin': '*',
+        'Authorization': authToken
+      })
+    };
+    return this.http.post<any>(this.createCompleteRoute(route, this.envUrl.urlAddress), order, httpOptions);
+  };
+
   public getCart = (route: string,authToken: string ) => {
     const httpOptions = {
       headers: new HttpHeaders({
@@ -137,6 +159,16 @@ export class OwnerRepositoryService {
       })
     };
     return this.http.get<CartItem>(this.createCompleteRoute(route, this.envUrl.urlAddress),httpOptions);
+  };
+
+  public getOrder = (route: string,authToken: string ) => {
+    const httpOptions = {
+      headers: new HttpHeaders({
+        'Content-Type': 'application/json',
+        'Authorization': authToken
+      })
+    };
+    return this.http.get<Order>(this.createCompleteRoute(route, this.envUrl.urlAddress),httpOptions);
   };
 
   private createCompleteRoute = (route: string, envAddress: string) => {

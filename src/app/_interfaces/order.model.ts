@@ -5,9 +5,10 @@ export interface Order {
     paymentGateway?: string;
     transactionReference?: string;
     email?: string;
-    shippingMethod?: string;
+    shippingMethod: string;
     shippingCost: number;
     estimateDeliveryDate: Date;
+    sellerBusinessName:string;
     total: number;
     orderItems: OrderItem[];
   }

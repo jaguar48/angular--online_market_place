@@ -19,6 +19,7 @@ import { ProductCategoryComponent } from '../products/product-category/product-c
 import { CategorydetailsComponent } from '../products/categorydetails/categorydetails.component';
 import { BuyerOrderComponent } from '../orders/buyer-order/buyer-order.component';
 import { SellerOrderComponent } from '../orders/seller-order/seller-order.component';
+import { UpdateOrderComponent } from '../orders/update-order/update-order.component';
 
 @NgModule({
   declarations: [
@@ -37,6 +38,7 @@ import { SellerOrderComponent } from '../orders/seller-order/seller-order.compon
     CategorydetailsComponent,
     BuyerOrderComponent,
     SellerOrderComponent,
+    UpdateOrderComponent,
   ],
   imports: [
     CommonModule,

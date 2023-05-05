@@ -1,6 +1,6 @@
 
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { OwnerRepositoryService } from '../../shared/services/owner-repository.service';
 import { ErrorHandlerService } from '../../shared/services/error-handler.service';
 import { HttpErrorResponse } from '@angular/common/http';
@@ -19,7 +19,7 @@ export class SellerOrderComponent implements OnInit{
   errorMessage: string = '';
 
   constructor(private repository: OwnerRepositoryService, private errorHandler: ErrorHandlerService,private activeRoute: ActivatedRoute,
-              private route: ActivatedRoute) { }
+              private route: ActivatedRoute,private router: Router) { }
 
   ngOnInit() {
    
@@ -44,5 +44,10 @@ export class SellerOrderComponent implements OnInit{
       }
     });
   } 
+
+  getStatus = (Id:number)=>{
+    const status: string = `/owner/update/status/${Id}`;
+    this.router.navigate([status]);
+  }
   
 }
