@@ -30,11 +30,15 @@
             <li class="nav-item" *ngIf="isLoggedIn">
               <a class="nav-link" [routerLink]="['/owner/create']" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">Create product {{create}} </a>
             </li>
-           
+            <li class="nav-item"  *ngIf="isLoggedIn">
+              <a class="nav-link" [routerLink]="['/owner/seller/orders']" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">Order History</a>
+            </li>
             <li class="nav-item"  *ngIf="isLoggedIn">
               
               <a class="nav-link" [routerLink]="['/owner/view/cart']" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">Cart ({{ cartItems.length }})</a>
             </li>
+
+           
           </ul>
         </div>
       </div>

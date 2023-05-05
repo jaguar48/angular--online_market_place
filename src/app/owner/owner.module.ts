@@ -17,6 +17,8 @@ import { ViewcartComponent } from '../cart/viewcart/viewcart.component';
 import { CheckoutComponent } from '../checkout/checkout/checkout.component';
 import { ProductCategoryComponent } from '../products/product-category/product-category.component';
 import { CategorydetailsComponent } from '../products/categorydetails/categorydetails.component';
+import { BuyerOrderComponent } from '../orders/buyer-order/buyer-order.component';
+import { SellerOrderComponent } from '../orders/seller-order/seller-order.component';
 
 @NgModule({
   declarations: [
@@ -33,6 +35,8 @@ import { CategorydetailsComponent } from '../products/categorydetails/categoryde
     CheckoutComponent,
     ProductCategoryComponent,
     CategorydetailsComponent,
+    BuyerOrderComponent,
+    SellerOrderComponent,
   ],
   imports: [
     CommonModule,

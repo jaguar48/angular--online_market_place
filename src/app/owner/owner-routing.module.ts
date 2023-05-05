@@ -13,6 +13,8 @@ import { ViewcartComponent } from '../cart/viewcart/viewcart.component';
 import { CheckoutComponent } from '../checkout/checkout/checkout.component';
 import { ProductCategoryComponent } from '../products/product-category/product-category.component';
 import { CategorydetailsComponent } from '../products/categorydetails/categorydetails.component';
+import { SellerComponent } from '../seller-dashboard/seller/seller.component';
+import { SellerOrderComponent } from '../orders/seller-order/seller-order.component';
 // import { CheckoutComponent } from '../checkout/checkout/checkout.component';
 
 const routes: Routes = [
@@ -29,7 +31,8 @@ const routes: Routes = [
   { path: 'deletecart', component: ViewcartComponent },
   { path: 'checkout/:cartId', component: CheckoutComponent },
   { path: 'category', component: ProductCategoryComponent  },
-  { path: 'category/:id', component: CategorydetailsComponent  },
+  { path: 'category/:id', component: CategorydetailsComponent},
+  { path: 'seller/orders', component: SellerOrderComponent },
 ];
 
 @NgModule({

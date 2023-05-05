@@ -9,6 +9,7 @@ import { BuyerForRegistration } from 'src/app/_interfaces/registerbuyer.model';
 import { SellerForRegistration } from 'src/app/_interfaces/regsterseller.model';
 import { User } from 'src/app/_interfaces/user.model';
 import { Category, CategoryWithProducts } from 'src/app/_interfaces/category.models';
+import { Order } from 'src/app/_interfaces/order.model';
 @Injectable({
   providedIn: 'root'
 })
@@ -95,6 +96,16 @@ export class OwnerRepositoryService {
     };
     return this.http.get<CartItem[]>(this.createCompleteRoute(route, this.envUrl.urlAddress), httpOptions);
   };
+
+  public getSellerOrder = (route: string, authToken: string) => {
+    const httpOptions = {
+      headers: new HttpHeaders({
+        'Content-Type': 'application/json',
+        Authorization: authToken,
+      }),
+    };
+    return this.http.get<Order>(this.createCompleteRoute(route, this.envUrl.urlAddress), httpOptions);
+  };
   
   public removeFromCart = (route: string,authToken: string ) => {
     const httpOptions = {
@@ -127,12 +138,6 @@ export class OwnerRepositoryService {
     };
     return this.http.get<CartItem>(this.createCompleteRoute(route, this.envUrl.urlAddress),httpOptions);
   };
-
-
-  // public initatepayment = (route: string, paymentRequest: Payment ) => {
-    
-  //   return this.http.post<Payment>(this.createCompleteRoute(route, this.envUrl.urlAddress),paymentRequest);
-  // };
 
   private createCompleteRoute = (route: string, envAddress: string) => {
     return `${envAddress}/${route}`;

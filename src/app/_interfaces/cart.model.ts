@@ -1,8 +1,3 @@
-// export interface Cart {
-//     id: number;
-//     items: CartItem[];
-//     cartId:number;
-// }  
 export interface CartItem {
     id: number;
     productId: number;
@@ -11,11 +6,6 @@ export interface CartItem {
     price: number;
     cartId:number;
   }
-
-
-
-
-  
 
   export interface Carts {
     productId: number;
