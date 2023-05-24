@@ -1,1 +1,42 @@
-<p>seller-menu works!</p>
+
+  <div class="row">
+    <div class="col">
+      <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+        <div class="container-fluid">
+          <a class="navbar-brand" [routerLink]="['/home']" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">Home</a>
+          <a class="navbar-brand" [routerLink]="['/seller/products']" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">Seller</a>
+          <button class="navbar-toggler" type="button" (click)="isCollapsed = !isCollapsed" [attr.aria-expanded]="!isCollapsed" aria-controls="collapseNav">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+  
+          <div class="collapse navbar-collapse" id="collapseNav">
+            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+              <li class="nav-item">
+                <a class="nav-link" [routerLink]="['/owner/products']" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">Products</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" [routerLink]="['/owner/category']" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">Categories</a>
+              </li>
+              <li class="nav-item" *ngIf="!isLoggedIn">
+                <a class="nav-link" [routerLink]="['/owner/seller/register']" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">Register Seller</a>
+              </li>
+              <li class="nav-item" *ngIf="!isLoggedIn">
+                <a class="nav-link" [routerLink]="['/owner/login']" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">Login</a>
+              </li>
+              <li class="nav-item" *ngIf="isLoggedIn">
+                <a class="nav-link" (click)="onLogout()">Logout</a>
+              </li>
+              <li class="nav-item" *ngIf="isLoggedIn">
+                <a class="nav-link" [routerLink]="['/owner/create']" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">Create product {{create}} </a>
+              </li>
+              <li class="nav-item"  *ngIf="isLoggedIn">
+                <a class="nav-link" [routerLink]="['/owner/seller/orders']" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">Seller Order History</a>
+              </li>
+           
+            </ul>
+          </div>
+        </div>
+      </nav>
+    </div>
+  </div>
+  

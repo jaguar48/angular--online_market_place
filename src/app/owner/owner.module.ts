@@ -20,6 +20,10 @@ import { CategorydetailsComponent } from '../products/categorydetails/categoryde
 import { BuyerOrderComponent } from '../orders/buyer-order/buyer-order.component';
 import { SellerOrderComponent } from '../orders/seller-order/seller-order.component';
 import { UpdateOrderComponent } from '../orders/update-order/update-order.component';
+import { MenuComponent } from '../menu/menu.component';
+import { FooterComponent } from '../footer/footer.component';
+import { LayoutComponent } from '../layout/layout.component';
+
 
 @NgModule({
   declarations: [
@@ -39,10 +43,13 @@ import { UpdateOrderComponent } from '../orders/update-order/update-order.compon
     BuyerOrderComponent,
     SellerOrderComponent,
     UpdateOrderComponent,
+    MenuComponent,
+    FooterComponent,
+    LayoutComponent,
   ],
   imports: [
     CommonModule,
-    OwnerRoutingModule,
+    OwnerRoutingModule, // Make sure the routing module is imported
     SharedModule,
     ReactiveFormsModule,
     FormsModule,
@@ -50,4 +57,4 @@ import { UpdateOrderComponent } from '../orders/update-order/update-order.compon
   ],
   providers: [DatePipe, CurrencyPipe],
 })
-export class OwnerModule { }
+export class OwnerModule {}

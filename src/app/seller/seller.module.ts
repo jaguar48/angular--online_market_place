@@ -6,6 +6,8 @@ import { SellerDashboardComponent } from '../seller-dashboard/seller-dashboard/s
 import { RouterModule } from '@angular/router';
 import { SellerMenuComponent } from '../seller-dashboard/seller-menu/seller-menu.component';
 import { SellerFooterComponent } from '../seller-dashboard/seller-footer/seller-footer.component';
+import { DetailsComponent } from '../seller-dashboard/details/details.component';
+import { SellerProductsComponent } from '../seller-dashboard/seller-products/seller-products.component';
 
 @NgModule({
   declarations: [
@@ -13,6 +15,8 @@ import { SellerFooterComponent } from '../seller-dashboard/seller-footer/seller-
     SellerDashboardComponent,
     SellerMenuComponent,
     SellerFooterComponent,
+    DetailsComponent,
+    SellerProductsComponent,
   ],
 
   imports: [

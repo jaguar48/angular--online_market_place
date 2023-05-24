@@ -17,26 +17,36 @@ import { SellerComponent } from '../seller-dashboard/seller/seller.component';
 import { SellerOrderComponent } from '../orders/seller-order/seller-order.component';
 import { UpdateOrderComponent } from '../orders/update-order/update-order.component';
 import { BuyerOrderComponent } from '../orders/buyer-order/buyer-order.component';
+import { LayoutComponent } from '../layout/layout.component';
 // import { CheckoutComponent } from '../checkout/checkout/checkout.component';
 
 const routes: Routes = [
-  { path:'products', component: ProductsComponent },
-  { path: 'details/:id', component: ProductDetailsComponent },
-  { path: 'edit/:id', component: EditProductComponent },
-  { path: 'create', component: CreateProductComponent},
-  { path: 'delete/:id', component: DeleteProductComponent },
-  { path: 'login', component: LoginComponent },
-  { path: 'seller/register', component: RegisterSellerComponent },
-  { path: 'buyer/register', component: RegisterBuyerComponent },
-  { path: 'cart/:id', component: CartComponent },
-  { path: 'view/cart', component: ViewcartComponent },
-  { path: 'deletecart', component: ViewcartComponent },
-  { path: 'checkout/:cartId', component: CheckoutComponent },
-  { path: 'category', component: ProductCategoryComponent  },
-  { path: 'category/:id', component: CategorydetailsComponent},
-  { path: 'seller/orders', component: SellerOrderComponent },
-  { path: 'update/status/:id', component: UpdateOrderComponent},
-  { path: 'buyer/orders', component: BuyerOrderComponent },
+  { path: '',  component: LayoutComponent, children:[
+
+    { path: '', redirectTo: 'products', pathMatch: 'full' },
+    { path:'products', component: ProductsComponent },
+    { path: 'details/:id', component: ProductDetailsComponent },
+    { path: 'edit/:id', component: EditProductComponent },
+    { path: 'create', component: CreateProductComponent},
+    { path: 'delete/:id', component: DeleteProductComponent },
+    { path: 'login', component: LoginComponent },
+    { path: 'seller/register', component: RegisterSellerComponent },
+    { path: 'buyer/register', component: RegisterBuyerComponent },
+    { path: 'cart/:id', component: CartComponent },
+    { path: 'view/cart', component: ViewcartComponent },
+    { path: 'deletecart', component: ViewcartComponent },
+    { path: 'checkout/:cartId', component: CheckoutComponent },
+    { path: 'category', component: ProductCategoryComponent  },
+    { path: 'category/:id', component: CategorydetailsComponent},
+    { path: 'seller/orders', component: SellerOrderComponent },
+    { path: 'update/status/:id', component: UpdateOrderComponent},
+    { path: 'buyer/orders', component: BuyerOrderComponent },
+
+  ] }
+  
+
+
+  
 ];
 
 @NgModule({

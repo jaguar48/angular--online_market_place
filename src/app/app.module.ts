@@ -23,7 +23,7 @@ import { MatSidenavModule } from '@angular/material/sidenav';
 import { MatIconModule } from '@angular/material/icon';
 import { MatListModule } from '@angular/material/list';
 import { SellerModule } from './seller/seller.module';
-import { UpdateOrderComponent } from './orders/update-order/update-order.component';
+
 
 // import { JWT_OPTIONS, JwtModule, JwtModuleOptions } from '@auth0/angular-jwt';
 
@@ -41,16 +41,12 @@ import { UpdateOrderComponent } from './orders/update-order/update-order.compone
   declarations: [
     AppComponent,
     HomeComponent,
-    MenuComponent,
+    
     NotFoundComponent,
     AboutComponent,
     InternalServerComponent,
     DeleteComponent,
-    FooterComponent,
     NavComponent,
-    
-   
-  
   ],
   imports: [
     BrowserModule,

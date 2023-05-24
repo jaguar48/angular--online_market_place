@@ -55,7 +55,7 @@ updateOrder(): void {
   const authToken = `Bearer ${token}`;
   
   this.repository.updateOrderStatus(`marketplace/orders/updateOrderStatus?orderId=${this.orderId}&status=${this.status }`, null, authToken).subscribe({
-    next: (response: { authorizationUrl: string}) => {
+    next: () => {
         console.log('Updated successful');
         this.router.navigate(['/owner/seller/orders']);
     },    
