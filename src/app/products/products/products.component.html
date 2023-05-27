@@ -24,6 +24,7 @@
                   <th>Price</th>
                   <th>Quantity</th>
                   <th>Brand</th>
+                  <th>Image</th> <!-- Add this column -->
                   <th>Action</th>
                 </tr>
               </thead>
@@ -34,6 +35,10 @@
                   <td>{{ product.price }}</td>
                   <td>{{ product.stockQuantity }}</td>
                   <td>{{ product.brand }}</td>
+                  <td>
+                    <img [src]="createImgPath(product.imageUrl)" alt="Product Image" class="product-image">
+
+                  </td>
                   <td>
                     <button type="button" id="details" class="btn btn-primary" (click)="getProductDetails(product.id)">Details</button>
                     <button type="button" id="edit" class="btn btn-warning" (click)="editProduct(product.id)">Edit</button>

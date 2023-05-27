@@ -8,4 +8,5 @@ export interface Product {
   categoryName:string;
  categoryId :number;
  businessName: string;
+ imageUrl: string
 }

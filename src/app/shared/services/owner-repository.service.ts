@@ -46,16 +46,17 @@ export class OwnerRepositoryService {
     return this.http.post<any>(this.createCompleteRoute(route, this.envUrl.urlAddress), buyer, this.generateHeaders());
   }
 
-  public createProduct = (route: string, product: ProductCreate, authToken: string) => {
+  public createProduct = (route: string, product: FormData, authToken: string) => {
     const httpOptions = {
       headers: new HttpHeaders({
-        'Content-Type': 'application/json',
         'Authorization': authToken
       })
     };
   
     return this.http.post<Product>(this.createCompleteRoute(route, this.envUrl.urlAddress), product, httpOptions);
   };
+  
+  
 
   public editProduct = (route: string, product: Product, authToken: string) => {
     const httpOptions = {

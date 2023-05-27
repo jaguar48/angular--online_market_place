@@ -44,7 +44,7 @@ export class CreateProductComponent implements OnInit {
       stockQuantity: ['', Validators.required],
       brand: ['', [Validators.required, Validators.maxLength(60)]],
       categoryId: ['', Validators.required],
-      images: [null] 
+      image: [null, Validators.required] // Update this line
     });
   }
   
@@ -62,25 +62,33 @@ export class CreateProductComponent implements OnInit {
     });
   }
 
+  onFileSelected(files: FileList) {
+    if (files.length > 0) {
+      this.selectedFiles = Array.from(files);
+    }
+  }
+
   onSubmit() {
     const productToCreate: ProductCreate = this.productForm.value;
-    const images: string[] = [];
-
-    for (let i = 0; i < this.selectedFiles.length; i++) {
-      const reader = new FileReader();
-      reader.onload = (event: ProgressEvent<FileReader>) => {
-        images.push(event.target.result as string);
-      };
-      reader.readAsDataURL(this.selectedFiles[i]);
-    }
+    const formData = new FormData();
   
-    productToCreate.images = images;
+    for (const key in productToCreate) {
+      if (key === 'image') {
+        formData.append('File', this.selectedFiles[0], this.selectedFiles[0].name);
+
+        
+      } else {
+        formData.append(key, productToCreate[key]);
+      }
+    }
   
     const productUrl = 'marketplace/products/create';
     const token = localStorage.getItem('token');
     const authToken = `Bearer ${token}`;
   
-    this.repository.createProduct(productUrl, productToCreate, authToken).subscribe({
+    
+  
+    this.repository.createProduct(productUrl, formData, authToken).subscribe({
       next: () => {
         const config: ModalOptions = {
           initialState: {
@@ -98,29 +106,6 @@ export class CreateProductComponent implements OnInit {
         this.errorHandler.handleError(err);
         this.errorMessage = this.errorHandler.errorMessage;
       }
-    });
-  }
-  
-  
-  onFileChange(event) {
-    const files = event.target.files;
-    this.selectedFiles = [];
-    
-    for (let i = 0; i < files.length; i++) {
-      this.selectedFiles.push(files[i]);
-    }
-    
-    const fileArray = [];
-    for (let i = 0; i < this.selectedFiles.length; i++) {
-      const reader = new FileReader();
-      reader.onload = (e: any) => {
-        fileArray.push(e.target.result);
-      };
-      reader.readAsDataURL(this.selectedFiles[i]);
-    }
-    
-    this.productForm.patchValue({
-      images: fileArray
     });
   }
   

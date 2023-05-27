@@ -41,7 +41,6 @@ import { SellerModule } from './seller/seller.module';
   declarations: [
     AppComponent,
     HomeComponent,
-    
     NotFoundComponent,
     AboutComponent,
     InternalServerComponent,
