@@ -1,4 +1,4 @@
-<div class="container">
+<!-- <div class="container">
   <div class="row justify-content-center">
     <div class="col-md-8">
       <div class="card mb-3">
@@ -55,3 +55,64 @@
     </div>
   </div>
 </div>
+ -->
+
+
+
+<div class="container">
+  
+  <br><br>
+    <div class="row justify-content-center">
+      <div class="col-md-6">
+        <img [src]="createImgPath(product.imageUrl)" [alt]="product.name" >
+      </div>
+      <div class="col-md-6">
+        <div class="row">
+          
+          <div class="col-md-12">
+            <h1>{{ product.name }}</h1>
+            <br>
+          </div>
+          
+        </div>
+        <div class="row">
+          <div class="col-md-12">
+          
+           <div class="col-md-6">
+            <p class="font-weight-bold">Price</p>
+            <p class="price">{{ product.price | currency:'USD' }}</p>
+            </div>
+            <div class="col-md-6">
+              <p class="font-weight-bold">Stock Quantity</p>
+              <p class="card-text">{{ product?.stockQuantity }}</p>
+            </div>
+           
+           
+            <div class="col-md-6">
+              <p class="font-weight-bold">Description</p>
+              <p class="card-text">{{ product.description}}</p>
+            </div>
+           
+            <div class="col-md-6">
+              <p class="font-weight-bold">Brand</p>
+              <p class="card-text">{{ product?.brand }}</p>
+            </div>
+            <div class="col-md-6">
+              <p class="font-weight-bold">Vendor</p>
+              <p>
+                <a href="">{{ product.businessName }}</a>
+              </p>
+            </div>
+            <div class="col-md-6">
+              <p class="font-weight-bold">Category</p>
+              <p>
+               
+                <a [routerLink]="['/owner/category', product.categoryId]">{{ product.categoryName }}</a>
+              </p>
+            </div>
+             <button class="btn btn-primary btn-submit" (click)="addToCart(product.id)">ADD TO CART</button><br>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>

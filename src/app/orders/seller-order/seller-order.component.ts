@@ -49,5 +49,29 @@ export class SellerOrderComponent implements OnInit{
     const status: string = `/owner/update/status/${Id}`;
     this.router.navigate([status]);
   }
+
+  generateReceipt(orderId: number) {
+
+    const receiptUrl = `marketplace/orders/${orderId}/receipt`;
+    const token = localStorage.getItem('token');
+    const authToken = `Bearer ${token}`;
+
+    this.repository.generateReceipt(receiptUrl,authToken).subscribe(
+      (response: Blob) => {
+        // Create a URL for the blob response
+        const url = window.URL.createObjectURL(response);
+
+        // Open the URL in a new tab
+        window.open(url);
+
+       
+        this.router.navigate(['/']);
+      },
+      (error: HttpErrorResponse) => {
+        console.error('Error generating receipt:', error);
+       
+      }
+    );
+  }
   
 }

@@ -48,4 +48,16 @@ export class ProductDetailsComponent implements OnInit{
       }
     });
   };
+  public createImgPath = (serverPath: string) => {
+    const baseUrl = 'https://localhost:7258'; 
+    const imagePath = serverPath.replace(/\\/g, '/'); 
+  
+    return `${baseUrl}/${imagePath}`;
+  };
+  
+  public addToCart = (id: string ) => {
+    const cartUrl: string = `/owner/cart/${id}`;
+    this.router.navigate([cartUrl]);
+  };
+  
 }

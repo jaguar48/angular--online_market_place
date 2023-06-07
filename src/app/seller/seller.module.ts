@@ -8,6 +8,8 @@ import { SellerMenuComponent } from '../seller-dashboard/seller-menu/seller-menu
 import { SellerFooterComponent } from '../seller-dashboard/seller-footer/seller-footer.component';
 import { DetailsComponent } from '../seller-dashboard/details/details.component';
 import { SellerProductsComponent } from '../seller-dashboard/seller-products/seller-products.component';
+import { CreateProductComponent } from '../seller-dashboard/create-product/create-product.component';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -16,15 +18,18 @@ import { SellerProductsComponent } from '../seller-dashboard/seller-products/sel
     SellerMenuComponent,
     SellerFooterComponent,
     DetailsComponent,
+    CreateProductComponent,
     SellerProductsComponent,
   ],
 
   imports: [
     CommonModule,
-
+    ReactiveFormsModule,
+    FormsModule,
     SellerRoutingModule
   ]
 })
+
 export class SellerModule { }
 
 

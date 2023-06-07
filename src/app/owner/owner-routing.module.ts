@@ -4,7 +4,7 @@ import { LoginComponent } from '../login/login.component';
 import { RegisterSellerComponent } from '../registration/register-seller/register-seller.component';
 import { RegisterBuyerComponent } from '../registration/register-buyer/register-buyer.component';
 import { ProductsComponent } from '../products/products/products.component';
-import { CreateProductComponent } from '../products/create-product/create-product.component';
+import { CreateProductComponent } from '../seller-dashboard/create-product/create-product.component';
 import { ProductDetailsComponent } from '../products/product-details/product-details.component';
 import { EditProductComponent } from '../products/edit-product/edit-product.component';
 import { DeleteProductComponent } from '../products/delete-product/delete-product.component';
@@ -43,9 +43,6 @@ const routes: Routes = [
     { path: 'buyer/orders', component: BuyerOrderComponent },
 
   ] }
-  
-
-
   
 ];
 

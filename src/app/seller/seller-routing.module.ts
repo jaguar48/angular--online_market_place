@@ -6,6 +6,7 @@ import { SellerDashboardComponent } from '../seller-dashboard/seller-dashboard/s
 import { IndexComponent } from '../seller-dashboard/index/index.component';
 import { DetailsComponent } from '../seller-dashboard/details/details.component';
 import { SellerProductsComponent } from '../seller-dashboard/seller-products/seller-products.component';
+import { CreateProductComponent } from '../seller-dashboard/create-product/create-product.component';
 
 const routes: Routes = [
   {
@@ -14,6 +15,7 @@ const routes: Routes = [
     children: [
       { path: 'products', component: SellerProductsComponent },
       { path: 'details', component: DetailsComponent },
+      { path: 'create', component: CreateProductComponent },
       { path: '', redirectTo: 'index', pathMatch: 'full' },
     ]
   }

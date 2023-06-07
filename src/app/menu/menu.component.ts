@@ -3,7 +3,7 @@ import { Component, Input, OnInit, Output, EventEmitter, ErrorHandler } from '@a
 import { OwnerRepositoryService } from '../shared/services/owner-repository.service';
 import { Router } from '@angular/router';
 import { CartItem } from '../_interfaces/cart.model';
-import { CreateProductComponent } from '../products/create-product/create-product.component';
+import { CreateProductComponent } from '../seller-dashboard/create-product/create-product.component';
 
 @Component({
   selector: 'app-menu',
@@ -18,7 +18,7 @@ isCollapsed: boolean = false;
 
 cartItems : CartItem []
 cartCount:number;
-create:CreateProductComponent;
+
 constructor(
   
   private repository: OwnerRepositoryService,
@@ -32,7 +32,7 @@ constructor(
 
     if(this.isLoggedIn){
       this.getCart();
-      this.createProduct();
+     
     }
    
   }
@@ -62,22 +62,22 @@ constructor(
     })}
     
 
-  createProduct() {
+  // createProduct() {
     
-    const productUrl = 'marketplace/products/create';
-    const token = localStorage.getItem('token');
-    const authToken = `Bearer ${token}`;
+  //   const productUrl = 'marketplace/products/create';
+  //   const token = localStorage.getItem('token');
+  //   const authToken = `Bearer ${token}`;
   
-    this.repository.createProduct(productUrl, null, authToken).subscribe({
-      next: () => {
+  //   this.repository.createProduct(productUrl, null, authToken).subscribe({
+  //     next: () => {
         
-        },
+  //       },
   
-        error: (err: HttpErrorResponse) => {
-          console.log('Error while fetching cart: ', err);
-        },
-      })
-    }
+  //       error: (err: HttpErrorResponse) => {
+  //         console.log('Error while fetching cart: ', err);
+  //       },
+  //     })
+  //   }
 
   }
 

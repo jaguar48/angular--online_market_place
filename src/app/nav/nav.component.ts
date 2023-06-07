@@ -6,7 +6,7 @@ import { Component, Input, OnInit, Output, EventEmitter, ErrorHandler } from '@a
 import { OwnerRepositoryService } from '../shared/services/owner-repository.service';
 import { Router } from '@angular/router';
 import { CartItem } from '../_interfaces/cart.model';
-import { CreateProductComponent } from '../products/create-product/create-product.component';
+import { CreateProductComponent } from '../seller-dashboard/create-product/create-product.component';
 
 @Component({
   selector: 'app-nav',

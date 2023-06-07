@@ -11,7 +11,7 @@
           <th>Shipping Method</th>
           <th>Shipping Cost</th>
           <th>Est. Delivery Date</th>
-         
+          <th>Print Receipt</th>
         </tr>
       </thead>
       <tbody>
@@ -27,7 +27,9 @@
           <td>{{ order.shippingMethod }}</td>
           <td>{{ order.shippingCost }}</td>
           <td>{{ order.estimateDeliveryDate }}</td>
-         
+          <td>
+            <button (click)="generateReceipt(order.id)" class="btn btn-primary">Print</button>
+          </td>
         </tr>
         <tr *ngFor="let order of orderhistory">
           <td colspan="10">

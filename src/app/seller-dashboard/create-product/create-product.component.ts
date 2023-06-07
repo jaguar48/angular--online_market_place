@@ -2,11 +2,11 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { HttpErrorResponse, HttpHeaders } from '@angular/common/http';
-import { Product } from './../../_interfaces/product.model';
-import { OwnerRepositoryService } from './../../shared/services/owner-repository.service';
-import { ErrorHandlerService } from './../../shared/services/error-handler.service';
+import { Product } from '../../_interfaces/product.model';
+import { OwnerRepositoryService } from '../../shared/services/owner-repository.service';
+import { ErrorHandlerService } from '../../shared/services/error-handler.service';
 import { BsModalRef, BsModalService, ModalOptions } from 'ngx-bootstrap/modal';
-import { SuccessModalComponent } from './../../shared/modals/success-modal/success-modal.component';
+import { SuccessModalComponent } from '../../shared/modals/success-modal/success-modal.component';
 import { ProductCreate } from 'src/app/_interfaces/product-create.model';
 import { Category } from 'src/app/_interfaces/category.models';
 

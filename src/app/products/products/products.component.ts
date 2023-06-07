@@ -34,7 +34,6 @@ export class ProductsComponent implements OnInit {
       next: (products: Product[]) => {
         this.products = products;
 
-        // Update the imageUrl property for each product
     
 
         this.filteredProducts = products;
@@ -50,8 +49,9 @@ export class ProductsComponent implements OnInit {
 
  
   public createImgPath = (serverPath: string) => {
-    const baseUrl = 'https://localhost:7258'; // Update with your server's base URL
-    const imagePath = serverPath.replace(/\\/g, '/'); // Replace backslashes with forward slashes
+    const baseUrl = 'https://localhost:7258'; 
+    const imagePath = serverPath.replace(/\\/g, '/'); 
+  
     return `${baseUrl}/${imagePath}`;
   };
   

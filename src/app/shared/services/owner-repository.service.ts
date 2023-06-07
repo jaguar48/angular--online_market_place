@@ -11,6 +11,7 @@ import { User } from 'src/app/_interfaces/user.model';
 import { Category, CategoryWithProducts } from 'src/app/_interfaces/category.models';
 import { Order } from 'src/app/_interfaces/order.model';
 import { updateorder } from 'src/app/_interfaces/update-order.models';
+import { Observable } from 'rxjs';
 @Injectable({
   providedIn: 'root'
 })
@@ -172,11 +173,24 @@ export class OwnerRepositoryService {
     return this.http.get<Order>(this.createCompleteRoute(route, this.envUrl.urlAddress),httpOptions);
   };
 
+ 
+  public generateReceipt = (route: string, authToken: string): Observable<Blob> => {
+    const httpOptions = {
+      headers: new HttpHeaders({
+        'Authorization': authToken,
+      }),
+      responseType: 'blob' as 'json' // Set the response type as blob
+    };
+  
+    return this.http.get<Blob>(this.createCompleteRoute(route, this.envUrl.urlAddress), httpOptions);
+  };
+  
+
   private createCompleteRoute = (route: string, envAddress: string) => {
     return `${envAddress}/${route}`;
   };
   
-  
+ 
 
   private generateHeaders = () => {
     return {

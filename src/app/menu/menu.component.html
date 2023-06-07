@@ -28,12 +28,10 @@
             <li class="nav-item" *ngIf="isLoggedIn">
               <a class="nav-link" (click)="onLogout()">Logout</a>
             </li>
-            <li class="nav-item" *ngIf="isLoggedIn">
-              <a class="nav-link" [routerLink]="['/owner/create']" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">Create product {{create}} </a>
-            </li>
-            <li class="nav-item"  *ngIf="isLoggedIn">
+           
+            <!-- <li class="nav-item"  *ngIf="isLoggedIn">
               <a class="nav-link" [routerLink]="['/owner/seller/orders']" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">Seller Order History</a>
-            </li>
+            </li> -->
             <li class="nav-item"  *ngIf="isLoggedIn">
               <a class="nav-link" [routerLink]="['/owner/buyer/orders']" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">Buyer Order History</a>
             </li>

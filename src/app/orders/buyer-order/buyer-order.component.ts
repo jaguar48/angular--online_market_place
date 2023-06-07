@@ -43,6 +43,28 @@ export class BuyerOrderComponent implements OnInit{
     });
   } 
 
- 
+  generateReceipt(orderId: number) {
+
+    const receiptUrl = `marketplace/orders/${orderId}/receipt`;
+    const token = localStorage.getItem('token');
+    const authToken = `Bearer ${token}`;
+
+    this.repository.generateReceipt(receiptUrl,authToken).subscribe(
+      (response: Blob) => {
+        // Create a URL for the blob response
+        const url = window.URL.createObjectURL(response);
+
+        // Open the URL in a new tab
+        window.open(url);
+
+        // Redirect or perform any necessary actions
+        this.router.navigate(['/receipt-success']);
+      },
+      (error: HttpErrorResponse) => {
+        console.error('Error generating receipt:', error);
+        // Handle the error appropriately
+      }
+    );
+  }
   
 }
