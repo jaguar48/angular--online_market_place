@@ -10,7 +10,6 @@ export interface Category {
     id: number;
     name: string;
     products: cateproduct[];
-
   }
 
 
@@ -20,3 +19,8 @@ export interface Category {
     description: string;
    
   }
+  export interface createCategory {
+   
+    name: string;
+  }
+  

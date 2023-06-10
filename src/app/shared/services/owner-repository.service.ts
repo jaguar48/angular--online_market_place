@@ -100,15 +100,6 @@ export class OwnerRepositoryService {
     return this.http.get<CartItem[]>(this.createCompleteRoute(route, this.envUrl.urlAddress), httpOptions);
   };
 
-  public getSellerOrder = (route: string, authToken: string) => {
-    const httpOptions = {
-      headers: new HttpHeaders({
-        'Content-Type': 'application/json',
-        Authorization: authToken,
-      }),
-    };
-    return this.http.get<Order>(this.createCompleteRoute(route, this.envUrl.urlAddress), httpOptions);
-  };
 
   public getBuyerOrder = (route: string, authToken: string) => {
     const httpOptions = {
@@ -174,16 +165,7 @@ export class OwnerRepositoryService {
   };
 
  
-  public generateReceipt = (route: string, authToken: string): Observable<Blob> => {
-    const httpOptions = {
-      headers: new HttpHeaders({
-        'Authorization': authToken,
-      }),
-      responseType: 'blob' as 'json' // Set the response type as blob
-    };
-  
-    return this.http.get<Blob>(this.createCompleteRoute(route, this.envUrl.urlAddress), httpOptions);
-  };
+
   
 
   private createCompleteRoute = (route: string, envAddress: string) => {

@@ -110,6 +110,6 @@ export class CreateProductComponent implements OnInit {
   }
   
   redirectToProductList = () => {
-    this.router.navigate(['/owner/products']);
+    this.router.navigate(['/seller/products']);
   };
 }

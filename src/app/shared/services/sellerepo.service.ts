@@ -7,9 +7,10 @@ import { ProductCreate } from 'src/app/_interfaces/product-create.model';
 import { BuyerForRegistration } from 'src/app/_interfaces/registerbuyer.model';
 import { SellerForRegistration } from 'src/app/_interfaces/regsterseller.model';
 import { User } from 'src/app/_interfaces/user.model';
-import { Category, CategoryWithProducts } from 'src/app/_interfaces/category.models';
+import { Category, CategoryWithProducts, createCategory } from 'src/app/_interfaces/category.models';
 import { Order } from 'src/app/_interfaces/order.model';
 import { updateorder } from 'src/app/_interfaces/update-order.models';
+import { Observable } from 'rxjs';
 @Injectable({
   providedIn: 'root'
 })
@@ -63,6 +64,18 @@ export class SellerepoService {
     return this.http.post<Product>(this.createCompleteRoute(route, this.envUrl.urlAddress), product, httpOptions);
   };
 
+  public createCategory = (route: string, category: createCategory, authToken: string) => {
+    const httpOptions = {
+      headers: new HttpHeaders({
+        'Content-Type': 'application/json',
+        'Authorization': authToken
+      })
+    };
+  
+    return this.http.post<createCategory>(this.createCompleteRoute(route, this.envUrl.urlAddress), category, httpOptions);
+  };
+
+
   public editProduct = (route: string, product: Product, authToken: string) => {
     const httpOptions = {
       headers: new HttpHeaders({
@@ -94,15 +107,7 @@ export class SellerepoService {
   };
 
 
-  public getCartItems = (route: string, authToken: string) => {
-    const httpOptions = {
-      headers: new HttpHeaders({
-        'Content-Type': 'application/json',
-        Authorization: authToken,
-      }),
-    };
-    return this.http.get<CartItem[]>(this.createCompleteRoute(route, this.envUrl.urlAddress), httpOptions);
-  };
+ 
 
   public getSellerOrder = (route: string, authToken: string) => {
     const httpOptions = {
@@ -113,6 +118,7 @@ export class SellerepoService {
     };
     return this.http.get<Order>(this.createCompleteRoute(route, this.envUrl.urlAddress), httpOptions);
   };
+
 
   public getBuyerOrder = (route: string, authToken: string) => {
     const httpOptions = {
@@ -182,7 +188,16 @@ export class SellerepoService {
   };
   
   
-
+  public generateReceipt = (route: string, authToken: string): Observable<Blob> => {
+    const httpOptions = {
+      headers: new HttpHeaders({
+        'Authorization': authToken,
+      }),
+      responseType: 'blob' as 'json' 
+    };
+  
+    return this.http.get<Blob>(this.createCompleteRoute(route, this.envUrl.urlAddress), httpOptions);
+  };
   private generateHeaders = () => {
     return {
       headers: new HttpHeaders({ 'Content-Type': 'application/json' })

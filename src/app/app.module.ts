@@ -23,6 +23,8 @@ import { MatSidenavModule } from '@angular/material/sidenav';
 import { MatIconModule } from '@angular/material/icon';
 import { MatListModule } from '@angular/material/list';
 import { SellerModule } from './seller/seller.module';
+import { CreateCategoryComponent } from './seller-dashboard/create-category/create-category.component';
+import { AddReviewComponent } from './seller-dashboard/add-review/add-review.component';
 
 
 // import { JWT_OPTIONS, JwtModule, JwtModuleOptions } from '@auth0/angular-jwt';
@@ -46,6 +48,8 @@ import { SellerModule } from './seller/seller.module';
     InternalServerComponent,
     DeleteComponent,
     NavComponent,
+  
+  
   ],
   imports: [
     BrowserModule,

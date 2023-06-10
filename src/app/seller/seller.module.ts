@@ -10,6 +10,9 @@ import { DetailsComponent } from '../seller-dashboard/details/details.component'
 import { SellerProductsComponent } from '../seller-dashboard/seller-products/seller-products.component';
 import { CreateProductComponent } from '../seller-dashboard/create-product/create-product.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { SellerOrderComponent } from '../orders/seller-order/seller-order.component';
+import { SharedModule } from '../shared/shared.module';
+import { CreateCategoryComponent } from '../seller-dashboard/create-category/create-category.component';
 
 @NgModule({
   declarations: [
@@ -18,14 +21,17 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
     SellerMenuComponent,
     SellerFooterComponent,
     DetailsComponent,
+    SellerOrderComponent,
     CreateProductComponent,
     SellerProductsComponent,
+    CreateCategoryComponent
   ],
 
   imports: [
     CommonModule,
     ReactiveFormsModule,
     FormsModule,
+    SharedModule,
     SellerRoutingModule
   ]
 })

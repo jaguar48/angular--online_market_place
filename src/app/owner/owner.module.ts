@@ -22,6 +22,7 @@ import { UpdateOrderComponent } from '../orders/update-order/update-order.compon
 import { MenuComponent } from '../menu/menu.component';
 import { FooterComponent } from '../footer/footer.component';
 import { LayoutComponent } from '../layout/layout.component';
+import { AddReviewComponent } from '../seller-dashboard/add-review/add-review.component';
 
 
 @NgModule({
@@ -40,7 +41,7 @@ import { LayoutComponent } from '../layout/layout.component';
     ProductCategoryComponent,
     CategorydetailsComponent,
     BuyerOrderComponent,
-    SellerOrderComponent,
+    AddReviewComponent,
     UpdateOrderComponent,
     MenuComponent,
     FooterComponent,

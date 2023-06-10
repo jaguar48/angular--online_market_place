@@ -1,6 +1,7 @@
 
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
+import { SellerepoService } from 'src/app/shared/services/sellerepo.service';
 import { OwnerRepositoryService } from '../../shared/services/owner-repository.service';
 import { ErrorHandlerService } from '../../shared/services/error-handler.service';
 import { HttpErrorResponse } from '@angular/common/http';
@@ -18,7 +19,7 @@ export class SellerOrderComponent implements OnInit{
   orderhistory : Order ;
   errorMessage: string = '';
 
-  constructor(private repository: OwnerRepositoryService, private errorHandler: ErrorHandlerService,private activeRoute: ActivatedRoute,
+  constructor(private repository: SellerepoService , private errorHandler: ErrorHandlerService,private activeRoute: ActivatedRoute,
               private route: ActivatedRoute,private router: Router) { }
 
   ngOnInit() {
@@ -56,22 +57,20 @@ export class SellerOrderComponent implements OnInit{
     const token = localStorage.getItem('token');
     const authToken = `Bearer ${token}`;
 
-    this.repository.generateReceipt(receiptUrl,authToken).subscribe(
-      (response: Blob) => {
-        // Create a URL for the blob response
+    this.repository.generateReceipt(receiptUrl,authToken).subscribe({
+        next: (response: Blob) => {
+       
         const url = window.URL.createObjectURL(response);
 
-        // Open the URL in a new tab
         window.open(url);
-
        
         this.router.navigate(['/']);
       },
-      (error: HttpErrorResponse) => {
-        console.error('Error generating receipt:', error);
-       
+      error: (err:HttpErrorResponse) => {
+        this.errorHandler.handleError(err);
+        this.errorMessage = this.errorHandler.errorMessage;
       }
-    );
+     } );
   }
   
 }
