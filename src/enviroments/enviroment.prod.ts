@@ -1,4 +1,4 @@
 export const environment = {
     production: true,
-    urlAddress: 'http://www.accountowner.com'
+    urlAddress: 'http://13.51.18.55/swagger/index.html'
   };
